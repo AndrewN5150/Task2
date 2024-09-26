@@ -11,7 +11,7 @@ jobs:
 
     env:
       BUILD_CONFIG: 'Release'
-      SOLUTION: 'Task2/Task2.sln'
+      SOLUTION: 'Task2.sln'
 
     runs-on: ubuntu-latest
 
