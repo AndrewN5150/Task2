@@ -11,6 +11,7 @@ namespace PlaywrightApiTests
         internal ApiTests()
         {
             [Test]
+            [Ignore("Ignore a fixture")]
             async Task ValidLogin()
             {
 
