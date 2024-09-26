@@ -8,5 +8,13 @@ namespace PlaywrightApiTests
 {
     internal class ApiTests
     {
+        internal ApiTests()
+        {
+            [Test]
+            async Task ValidLogin()
+            {
+
+            }
+        }
     }
 }

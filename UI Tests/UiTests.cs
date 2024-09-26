@@ -2,7 +2,7 @@
 using NUnit.Framework.Internal;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
-namespace PlaywrightUITests;
+namespace Task2;
 
 [Parallelizable(ParallelScope.Self)]
 [TestFixture]
