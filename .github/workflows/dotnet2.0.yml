@@ -10,7 +10,7 @@ jobs:
   build:
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest]
+        os: [windows-latest]
     runs-on: ${{ matrix.os }}
     env:
       APP_BUILD_VERSION: ${{ format('3.1.{0}', github.run_number) }}
@@ -21,14 +21,6 @@ jobs:
         uses: actions/setup-dotnet@v1
         with:
           dotnet-version: 8.0.x
-      
-      - name: Setup .NET 3.1.x
-        uses: actions/setup-dotnet@v1
-        with:
-          dotnet-version: "3.1.x"
-      
-      - name: Package (debug)
-        run: dotnet pack -p:PackageVersion=${{ env.APP_BUILD_VERSION }}
       
       - name: Package (release)
         run: dotnet pack -c Release -p:PackageVersion=${{ env.APP_BUILD_VERSION }}
