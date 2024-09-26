@@ -12,15 +12,18 @@ jobs:
 
     strategy:
       matrix:
-        configuration: [Debug, Release]
+        configuration: [Debug]
 
-    runs-on: windows-latest  # For a list of available runner types, refer to
-                             # https://help.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobsjob_idruns-on
+    runs-on: windows-latest
+    permissions:
+      contents: write
+      pull-requests: write
+      repository-projects: write
 
     env:
-      Solution_Name: Task2.sln                        # Replace with your solution name, i.e. MyWpfApp.sln.
-      Test_Project_Path: Task2/Task2.csproj                # Replace with the path to your test project, i.e. MyWpfApp.Tests\MyWpfApp.Tests.csproj.
-
+      Solution_Name: Task2.sln
+      Test_Project_Path: Task2/Task2.csproj
+      
     steps:
     - name: Checkout
       uses: actions/checkout@v4
