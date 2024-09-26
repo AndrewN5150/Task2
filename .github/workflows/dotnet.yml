@@ -41,3 +41,6 @@ jobs:
         path: "**/test-results.trx"                            
         reporter: dotnet-trx
         fail-on-error: true
+        id-token: write
+        contents: read
+        checks: write
