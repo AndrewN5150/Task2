@@ -22,7 +22,7 @@ public class UITests : PageTest
   }
 
   [Test]
-  public async Task ValidLogin()
+  public async Task GivenValidCredentials_WhenUserLogsIn_ThenLoginIsSuccessful()
   {
     //Arrange
     Login();
@@ -42,7 +42,7 @@ public class UITests : PageTest
   }
 
   [Test]
-  public async Task EnsureCheckoutOverviewIsCorrect()
+  public async Task GivenItemsInCart_WhenNavigatingToCheckout_ThenOverviewIsCorrect()
   {
     //Arrange
     Login();
@@ -96,7 +96,7 @@ public class UITests : PageTest
   }
 
   [Test]
-  public async Task PurchaseAndPaymentFlowTest()
+  public async Task PurchaseAndPaymeGivenItemsInCart_WhenUserCompletesPurchase_ThenPaymentIsSuccessfulntFlowTest()
   {
     //Arrange
     Login();
