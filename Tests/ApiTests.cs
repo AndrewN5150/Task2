@@ -8,7 +8,7 @@ namespace Task2.Tests;
 public class ApiTests : PageTest
 {
   [Test]
-  public async Task RegisterAUser()
+  public async Task GivenValidDetails_WhenUserRegisters_ThenRegistrationIsSuccessful()
   {
     // Arrange
 
@@ -38,7 +38,7 @@ public class ApiTests : PageTest
   }
 
   [Test]
-  public async Task GetaCurrentUser()
+  public async Task GivenUserId_WhenFetchingUser_ThenUserDetailsAreReturned()
   {
     // Arrange
 
@@ -61,7 +61,7 @@ public class ApiTests : PageTest
   }
 
   [Test]
-  public async Task DeleteAUser()
+  public async Task GivenUserId_WhenUserIsDeleted_ThenUserIsRemoved()
   {
     //Arrange
 
