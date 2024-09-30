@@ -7,69 +7,69 @@ namespace Task2.Tests;
 [TestFixture]
 public class ApiTests : PageTest
 {
-  [Test]
-  public async Task RegisterAUser()
-  {
-    // Arrange
-
-    // All requests sent start with this API endpoint.
-    var playwright = await Microsoft.Playwright.Playwright.CreateAsync();
-    var baseURL = await playwright.APIRequest.NewContextAsync(new() { BaseURL = "https://reqres.in/api/" });
-
-    // Act
-
-    // This is the request to GET user number 1
-    var request = await baseURL.PostAsync("register", new()
+    [Test]
+    public async Task RegisterAUser()
     {
-      DataObject = new
-      {
-        email = "eve.holt@reqres.in",
-        password = "pistol"
-      }
-    });
+        // Arrange
 
-    var response = await request.JsonAsync();
+        // All requests sent start with this API endpoint.
+        var playwright = await Microsoft.Playwright.Playwright.CreateAsync();
+        var baseURL = await playwright.APIRequest.NewContextAsync(new() { BaseURL = "https://reqres.in/api/" });
 
-    // Assert
-    response.Value.GetProperty("id").ToString().Should().NotBeNullOrEmpty();
-    response.Value.GetProperty("token").GetString().Should().Be("QpwL5tke4Pnpja7X4");
-  }
+        // Act
 
-  [Test]
-  public async Task GetaCurrentUser()
-  {
-    // Arrange
+        // This is the request to GET user number 1
+        var request = await baseURL.PostAsync("register", new()
+        {
+            DataObject = new
+            {
+                email = "eve.holt@reqres.in",
+                password = "pistol"
+            }
+        });
 
-    // All requests sent start with this API endpoint.
-    var playwright = await Microsoft.Playwright.Playwright.CreateAsync();
-    var baseURL = await playwright.APIRequest.NewContextAsync(new() { BaseURL = "https://reqres.in/api/" });
+        var response = await request.JsonAsync();
 
-    // Act
+        // Assert
+        response.Value.GetProperty("id").ToString().Should().NotBeNullOrEmpty();
+        response.Value.GetProperty("token").GetString().Should().Be("QpwL5tke4Pnpja7X4");
+    }
 
-    // This is the request to GET user number 1
-    var request = await baseURL.GetAsync("users/1");
+    [Test]
+    public async Task GetaCurrentUser()
+    {
+        // Arrange
 
-    var response = await request.JsonAsync();
+        // All requests sent start with this API endpoint.
+        var playwright = await Microsoft.Playwright.Playwright.CreateAsync();
+        var baseURL = await playwright.APIRequest.NewContextAsync(new() { BaseURL = "https://reqres.in/api/" });
 
-    //Assert
-    response.Value.GetProperty("data").GetProperty("id").ToString().Should().NotBeNullOrEmpty();
-    response.Value.GetProperty("data").GetProperty("email").GetString().Should().Be("george.bluth@reqres.in");
-    response.Value.GetProperty("data").GetProperty("first_name").GetString().Should().Be("George");
-    response.Value.GetProperty("data").GetProperty("last_name").GetString().Should().Be("Bluth");
-  }
+        // Act
 
-  [Test]
-  public async Task DeleteAUser()
-  {
-    //Arrange
+        // This is the request to GET user number 1
+        var request = await baseURL.GetAsync("users/1");
 
-    // All requests sent start with this API endpoint.
-    var baseURL = await Playwright.APIRequest.NewContextAsync(new() { BaseURL = "https://reqres.in/api/" });
+        var response = await request.JsonAsync();
 
-    // This is the request to GET user number 1
-    var request = await baseURL.DeleteAsync("users/2");
+        //Assert
+        response.Value.GetProperty("data").GetProperty("id").ToString().Should().NotBeNullOrEmpty();
+        response.Value.GetProperty("data").GetProperty("email").GetString().Should().Be("george.bluth@reqres.in");
+        response.Value.GetProperty("data").GetProperty("first_name").GetString().Should().Be("George");
+        response.Value.GetProperty("data").GetProperty("last_name").GetString().Should().Be("Bluth");
+    }
 
-    //Assert
-    request.Status.Should().Be(204);
-  }
+    [Test]
+    public async Task DeleteAUser()
+    {
+        //Arrange
+
+        // All requests sent start with this API endpoint.
+        var baseURL = await Playwright.APIRequest.NewContextAsync(new() { BaseURL = "https://reqres.in/api/" });
+
+        // This is the request to GET user number 1
+        var request = await baseURL.DeleteAsync("users/2");
+
+        //Assert
+        request.Status.Should().Be(204);
+    }
 }
